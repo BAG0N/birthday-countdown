@@ -6,8 +6,8 @@ from win32api import GetSystemMetrics
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 
-DAY = 24  # Day of your birthday
-MONTH = 6  # Month of your birthday (11 = November)
+DAY = 27  # Day of your birthday
+MONTH = 11  # Month of your birthday (11 = November)
 FONT_NAME = 'Arial.ttf'  # Name of the font used for the text
 FONT_SIZE = 150  # Size of the font
 TEXT_COLOR = (0, 0, 0, 255)  # Color of the text in RGBA (red, green, blue, alpha)
@@ -36,9 +36,9 @@ class Counter:
 
         font = ImageFont.truetype(f'C:/Windows/Fonts/{FONT_NAME}', FONT_SIZE)
         draw = ImageDraw.Draw(new)
-
         text = '{:,}'.format(text)
         x, y = draw.textsize(text, font=font)
+
         positions = {'nw': (0, 0),
                      'n': (WIDTH // 2 - x // 2, 0),
                      'ne': (WIDTH - x, 0),
@@ -48,8 +48,8 @@ class Counter:
                      'sw': (0, HEIGHT - y - HEIGHT // 15),
                      's': (WIDTH // 2 - x // 2, HEIGHT - y - HEIGHT // 15),
                      'se': (WIDTH - x, HEIGHT - y - HEIGHT // 15)}
-        draw.text(positions[self.pos], text, font=font, fill=TEXT_COLOR)
 
+        draw.text(positions[self.pos], text, font=font, fill=TEXT_COLOR)
         return new
 
     def get_time_left(self):
